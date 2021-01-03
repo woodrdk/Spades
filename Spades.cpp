@@ -74,11 +74,13 @@ int main() {
 
 	srand(time(0));  // Initialize random number generator.
 	for (int i = 0; i < 3; i++) {
-		players[i] = names[(rand() % 8) + 1]; // diag later
+		players[i] = names[(rand() % 8) + 1]; //TODO: diag later
 	}
-	cout << "\t Welcome " << playerName << " you are playing with " << players[0] << ", " << players[1] << " and " << players[2] << "." << endl;
-	
+	cout << "Welcome " << playerName << " you are playing with " << players[0] << ", " << players[1] << " and " << players[2] << "." << endl;
+	cout << "Your teammate is " << players[1] << endl;
 
+
+	cout << endl << endl << endl;
 	// pauses the program till key is pressed
 	system("pause");
 	return 0;
