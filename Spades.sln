@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Spades", "Spades.vcxproj", "{F489453C-8560-45E7-8050-88744AE07164}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F489453C-8560-45E7-8050-88744AE07164}.Debug|x64.ActiveCfg = Debug|x64
+		{F489453C-8560-45E7-8050-88744AE07164}.Debug|x64.Build.0 = Debug|x64
+		{F489453C-8560-45E7-8050-88744AE07164}.Debug|x86.ActiveCfg = Debug|Win32
+		{F489453C-8560-45E7-8050-88744AE07164}.Debug|x86.Build.0 = Debug|Win32
+		{F489453C-8560-45E7-8050-88744AE07164}.Release|x64.ActiveCfg = Release|x64
+		{F489453C-8560-45E7-8050-88744AE07164}.Release|x64.Build.0 = Release|x64
+		{F489453C-8560-45E7-8050-88744AE07164}.Release|x86.ActiveCfg = Release|Win32
+		{F489453C-8560-45E7-8050-88744AE07164}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16A004DD-635C-48C7-8BFB-F5EB1EE5B99A}
+	EndGlobalSection
+EndGlobal
