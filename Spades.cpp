@@ -47,14 +47,36 @@ int main() {
 	int gameLength;
 	cout << "Enter the number you wish to proceed with: " << flush;
 	cin >> gameLength;
+	int gamePoints;
 	if (gameLength > 0 && gameLength < 4) {
-
+		if (gameLength == 1) {
+			gamePoints = 200;
+		}
+		else if (gameLength == 2) {
+			gamePoints = 500;
+		}
+		else {
+			// quit game
+		}
 	}
 	else {
 		cout << "Not a valid option!" << endl;
 	}
 
+	// get players name
+	string playerName;
+	cout << "What is your name player? " << flush;
+	cin >> playerName;
+	string names[] = { "Bob", "Draven", "Kellan", "Amie", "Ace", "Charlene", "Leann", "Dan" };
+	// get 3 random names
+	string players[3] = {};
 	
+
+	srand(time(0));  // Initialize random number generator.
+	for (int i = 0; i < 3; i++) {
+		players[i] = names[(rand() % 8) + 1]; // diag later
+	}
+	cout << "\t Welcome " << playerName << " you are playing with " << players[0] << ", " << players[1] << " and " << players[2] << "." << endl;
 	
 
 	// pauses the program till key is pressed
