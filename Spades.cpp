@@ -34,34 +34,12 @@ void initializeDeck(array<const string*, DECK_SIZE>* deck);
 void displayDeck(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printMenu();
-
+void printIntro();
 // Main function that calls the actions of the program
 int main() {
-	
+	printIntro();
 
-	cout << endl << endl << "\t\tWelcome to Rob's C++ Spades Game" << endl;
-	cout << endl << "Would you like a short game or a long game? " << endl;
-	cout << "1. Short game" << endl;
-	cout << "2. Long game" << endl;
-	cout << "3. End game" << endl;
-	int gameLength;
-	cout << "Enter the number you wish to proceed with: " << flush;
-	cin >> gameLength;
-	int gamePoints;
-	if (gameLength > 0 && gameLength < 4) {
-		if (gameLength == 1) {
-			gamePoints = 200;
-		}
-		else if (gameLength == 2) {
-			gamePoints = 500;
-		}
-		else {
-			// quit game
-		}
-	}
-	else {
-		cout << "Not a valid option!" << endl;
-	}
+	
 
 	// get players name
 	string playerName;
@@ -85,6 +63,61 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+void printInstructions() {
+	cout << "These are the rules as per Bicycle Playing cards at https://bicyclecards.com/how-to-play/spades/ " << endl << endl;
+	cout << "OBJECT OF THE GAME" << endl;
+	cout << "To win at least the number of tricks bid." << endl;
+	cout << "THE DEAL" << endl;
+	cout << "The first dealer is chosen by a draw for high card, and thereafter the turn to deal proceeds clockwise.The entire deck is dealt one at a time, face down, beginning on the dealer's left. The players then pick up their cards and arrange them by suits." << endl;
+	cout << "THE BIDDING" << endl;
+	cout << "Each player decides how many tricks they will be able to take.The player to the dealer's left starts the bidding and, in turn, each player states how many tricks they expect to win. There is only one round of bidding, and the minimum bid is One. Every player must make a bid; no player may pass. No suit is named in the bid, for as the name of the game implies, spades are always trump." << endl;
+	cout << "THE PLAY" << endl;
+	cout << "The game is scored by hands, and the winner must make a certain number of points, which is decided before the game begins.Five hundred points is common, but 200 points is suitable for a short game.The player on the dealer's left makes the opening lead, and players must follow suit, if possible. If a player cannot follow suit, they may play a trump or discard. The trick is won by the player who plays the highest trump or if no trump was played, the player who played the highest card in the suit led. The player who wins the trick leads next. Play continues until none of the players have any cards left. Each hand is worth 13 tricks. Spades cannot be led unless played previously or player to lead has nothing but Spades in his hand." << endl;
+	cout << "HOW TO KEEP SCORE" << endl;
+	cout << "For making the contract(the number of tricks bid), the player scores 10 points for each trick bid, plus 1 point for each overtrick." << endl;
+	cout << "For example, if the player's bid is Seven and they make seven tricks, the score would be 70. If the bid was Five and the player won eight tricks, the score would be 53 points: 50 points for the bid, and 3 points for the three overtricks. In some games, overtricks are called \"bags\" and a deduction of 100 points is made every time a player accumulates 10 bags. Thus, the object is always to fulfill the bid exactly." << endl;
+	cout << "If the player \"breaks contract,\" that is, if they take fewer than the number of tricks bid, the score is 0. For example, if a player bids Fourand wins only three tricks, no points are awarded." << endl;
+	cout << "One of the players is the scorerand writes the bids down, so that during the playand for the scoring afterward, this information will be available to all the players.When a hand is over, the scores should be recorded next to the bids, and a running score should be kept so that players can readily see each other's total points. If there is a tie, then all players participate in one more round of play." << endl;
+}
+
+void printIntro() {
+	cout << endl << endl << "\t\tWelcome to Rob's C++ Spades Game" << endl;
+	cout << endl << "Do you need instructions how to play? " << endl;
+	int instructions;
+	cout << "Press 1 for yes or 2 for no " << flush;
+	cin >> instructions;
+	if (instructions == 1) {
+		printInstructions();
+	}
+	cout << endl << "Would you like a short game or a long game? " << endl;
+	cout << "1. Short game" << endl;
+	cout << "2. Long game" << endl;
+	cout << "3. End game" << endl;
+	int gamePoints = -1;
+	while (gamePoints == -1) {
+		int gameLength;
+		cout << "Enter the number you wish to proceed with: " << flush;
+		cin >> gameLength;
+		if (gameLength > 0 && gameLength < 4) {
+			if (gameLength == 1) {
+				gamePoints = 200;
+			}
+			else if (gameLength == 2) {
+				gamePoints = 500;
+			}
+			else {
+				// quit game
+			}
+		}
+		else {
+			cout << "Not a valid option!" << endl;
+		}
+	}
+}
+
+
+
 
 // This method builds the initial deck of cards before displayed or shuffled
 void initializeDeck(array<const string*, DECK_SIZE>* deck) {
