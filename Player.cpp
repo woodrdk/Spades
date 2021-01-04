@@ -36,3 +36,10 @@ string Player::getName() {
 void Player::setTeamMate(string teamMate) {
 	name = teamMate;
 }
+
+void Player::setCards(string cards[]) {
+	for (int i = 0; i < 13; i++) {
+		cards = &cards[i];
+	}
+}
+

@@ -60,13 +60,24 @@ int main() {
 		if (i < 2) {
 			pl[i].setTeamMate(*(participants + 2));
 		}
-		else if (i == 2 || i == 4) {
+		else{
 			pl[i].setTeamMate(*(participants - 2));
 		}
 	}
 
-	
+	cout << pl[0].getName() << " you begin the game!" << endl;
+	cout << "Shuffling and dealing the cards..." << endl;
+	array<const string*, DECK_SIZE> deck;
+	initializeDeck(&deck);
+	shuffleDeck(&deck);
 
+	
+	// have players see cards
+	// have players bid
+	// will have 13 rounds
+	// have player play card
+	// after 13 rounds calculate score
+	// check if game over if not start again if so display results
 
 	cout << endl << endl << endl;
 	// pauses the program till key is pressed
