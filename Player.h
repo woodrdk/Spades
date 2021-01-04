@@ -19,5 +19,7 @@ public:
 	string getName();
 	void setTeamMate(string teamMate);
 	void setCards(string cards[]);
+	void setBid(int tricks);
+	int seeBid();
 	Player(): score(0),bid(0), tricks(0), bags(0), cards(), teamMate() {};
 };

@@ -43,3 +43,10 @@ void Player::setCards(string cards[]) {
 	}
 }
 
+void Player::setBid(int tricks) {
+	bid = tricks;
+}
+
+int Player::seeBid() {
+	return bid;
+}

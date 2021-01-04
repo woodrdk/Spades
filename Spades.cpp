@@ -70,14 +70,26 @@ int main() {
 	array<const string*, DECK_SIZE> deck;
 	initializeDeck(&deck);
 	shuffleDeck(&deck);
-
-	
-	// have players see cards
-	// have players bid
+	bool gameNotWon = true;
+	while (gameNotWon) {
+		// have players see cards
+		// have players bid
+		for (int b = 0; b < 4; b++) {
+			if (b == 3) {
+				int tricks;
+				cout << pl[b].getName() << " how many tricks do you want to bid? ";
+				cin >> tricks;
+				pl[b].setBid(tricks);
+			}
+		}
+		cout << pl[3].seeBid() << endl;
+		gameNotWon = false;
 	// will have 13 rounds
 	// have player play card
 	// after 13 rounds calculate score
 	// check if game over if not start again if so display results
+	}
+	
 
 	cout << endl << endl << endl;
 	// pauses the program till key is pressed
