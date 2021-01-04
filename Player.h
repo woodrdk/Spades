@@ -17,5 +17,6 @@ public:
 	string toString();
 	void setName(string newName);
 	string getName();
-	Player() {};
+	void setTeamMate(string teamMate);
+	Player(): score(0),bid(0), tricks(0), bags(0), cards(), teamMate() {};
 };

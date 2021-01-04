@@ -56,6 +56,13 @@ int main() {
 		cout << *(participants+i) << endl;
 		string name = *(participants + i);
 		pl[i].setName(name);
+		
+		if (i < 2) {
+			pl[i].setTeamMate(*(participants + 2));
+		}
+		else if (i == 2 || i == 4) {
+			pl[i].setTeamMate(*(participants - 2));
+		}
 	}
 
 	

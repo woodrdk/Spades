@@ -32,3 +32,7 @@ void Player::setName(string newName) {
 string Player::getName() {
 	return name;
 }
+
+void Player::setTeamMate(string teamMate) {
+	name = teamMate;
+}
