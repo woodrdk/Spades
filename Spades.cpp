@@ -35,6 +35,7 @@ void displayDeck(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printMenu();
 void printIntro();
+void gameWon();
 string *getNames();
 // Main function that calls the actions of the program
 int main() {
@@ -101,14 +102,18 @@ int main() {
 
 			else {
 				// computer bids
-				int compBid;
+				int compBid = -1;
 				pl[b].setBid(compBid);
 			}
 		}
 		// cout << pl[3].seeBid() << endl; // testing line for seeing bid
+		gameWon();
+		// need to order player cards
+		// assign cards to each player
 
 		gameNotWon = false;
 		for (int turns = 0; turns < 13; turns++) {
+			// starting player plays then rotates thru the order of players
 
 		}
 	// will have 13 rounds
@@ -122,6 +127,24 @@ int main() {
 	// pauses the program till key is pressed
 	system("pause");
 	return 0;
+}
+
+
+void gameWon() {
+	cout << "Congratulations!!!!!!" << endl;
+	cout << endl << "The team of " << "A" << " & " << "B" << "have won this game!!" << endl << endl;
+	cout << "With a score of " << "XXX points" << endl;
+	cout << endl << endl << "Would you like to play again? " << endl;
+	cout << "1. Play again" << endl;
+	cout << "2. Quit" << endl;
+	int repeat;
+	cin >> repeat;
+	if (repeat == 1) {
+		// play again
+	}
+	else {
+		// quit
+	}
 }
 
 string* getNames() {
