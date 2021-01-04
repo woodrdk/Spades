@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <random>
 #include <ctime>
-
+#include "Player.h"
 using namespace std;
 
 // Defined the decksize
@@ -35,33 +35,55 @@ void displayDeck(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printMenu();
 void printIntro();
+string *getNames();
 // Main function that calls the actions of the program
 int main() {
 	printIntro();
 
-	
-
-	// get players name
-	string playerName;
-	cout << "What is your name player? " << flush;
-	cin >> playerName;
-	string names[] = { "Bob", "Draven", "Kellan", "Amie", "Ace", "Charlene", "Leann", "Dan" };
-	// get 3 random names
-	string players[3] = {};
-	
-
-	srand(time(0));  // Initialize random number generator.
-	for (int i = 0; i < 3; i++) {
-		players[i] = names[(rand() % 8) + 1]; //TODO: diag later
+	// bids
+    // blind nill
+    // nill
+    // 1-13
+	string *participants;
+	participants = getNames();
+	// following loop was for testing
+	Player player1;
+	Player player2;
+	Player player3;
+	Player player4;
+	Player pl[4] = { player1, player2, player3, player4 }; // players array
+	for (int i = 0; i < sizeof(participants); i++){
+		cout << *(participants+i) << endl;
+		string name = *(participants + i);
+		pl[i].setName(name);
 	}
-	cout << "Welcome " << playerName << " you are playing with " << players[0] << ", " << players[1] << " and " << players[2] << "." << endl;
-	cout << "Your teammate is " << players[1] << endl;
+
+	
 
 
 	cout << endl << endl << endl;
 	// pauses the program till key is pressed
 	system("pause");
 	return 0;
+}
+
+string* getNames() {
+	// get players name
+	string playerName;
+	cout << "What is your name player? " << flush;
+	cin >> playerName;
+	string names[] = { "Bob", "Draven", "Kellan", "Amie", "Ace", "Charlene", "Leann", "Dan" };
+	// get 3 random names
+	static string players[4];
+	players[3] = playerName;
+	srand(time(0));  // Initialize random number generator.
+	for (int i = 0; i < 3; i++) {
+		players[i] = names[(rand() % 7) + 1]; //TODO: diag later
+	}
+	cout << "Welcome " << playerName << " you are playing with " << players[0] << ", " << players[1] << " and " << players[2] << "." << endl;
+	cout << "Your teammate is " << players[1] << endl << endl;
+
+	return players;
 }
 
 void printInstructions() {
@@ -165,18 +187,4 @@ void shuffleDeck(array<const string*, DECK_SIZE>* deck) {
 	cout << "Shuffled the deck!" << endl << endl;
 }
 
-// 13 tricks 
-// short game or long game
-
-// player 
-// score
-// bid
-// tricks
-// bags
-// cards
-
-// bids
-// blind nill
-// nill
-// 1-13
 
