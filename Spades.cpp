@@ -72,7 +72,7 @@ int main() {
 		// have players see cards
 		// have players bid
 		cout << "Do you wish to bid blind nill... yes or no?" << flush;
-		bool blind;
+		bool blind = false;
 		string blindBid;
 		cin >> blindBid;
 		if (blindBid == "yes") {
@@ -84,16 +84,20 @@ int main() {
 		}
 		for (int b = 0; b < 4; b++) {
 			if (b == 3) {
-				int tricks;
-				// bids
-				// blind nill
-				// nill
-				// 1-13
+				int tricks = -1;
 				if (blind == false) {
-					cout << pl[b].getName() << " how many tricks do you want to bid? ";
-					cin >> tricks;
-					pl[b].setBid(tricks);
+					while (tricks == -1) {
+						cout << pl[b].getName() << " how many tricks do you want to bid? ";
+						cin >> tricks;
+						pl[b].setBid(tricks);
+						if (tricks < 0 || tricks > 13) {
+							cout << "Please enter a valid number of tricks" << endl;
+						}
+					}
 				}
+				
+				// 1-13
+				
 			}
 		}
 		cout << pl[3].seeBid() << endl;
