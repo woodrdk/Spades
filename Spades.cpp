@@ -38,22 +38,24 @@ void printIntro();
 string *getNames();
 // Main function that calls the actions of the program
 int main() {
+	// prints the welcome to the game
 	printIntro();
-
-
+	// gets participants names of the players
 	string *participants;
 	participants = getNames();
-	// following loop was for testing
-	Player player1;
-	Player player2;
-	Player player3;
-	Player player4;
-	Player pl[4] = { player1, player2, player3, player4 }; // players array
+
+	// creates 4 players 3 are computer human is player4
+	Player player1, player2, player3, player4;
+	// array of the players
+	Player pl[4] = { player1, player2, player3, player4 };
+	// this loop sets the names of the players
 	for (int i = 0; i < sizeof(participants); i++){
-		cout << *(participants+i) << endl;
+		// cout << *(participants+i) << endl; // for testing
+		// gets the name of the participant
 		string name = *(participants + i);
+		// sets the name to the player
 		pl[i].setName(name);
-		
+		// the following will set the teammates of the players
 		if (i < 2) {
 			pl[i].setTeamMate(*(participants + 2));
 		}
@@ -62,7 +64,7 @@ int main() {
 		}
 	}
 
-	cout << pl[0].getName() << " you begin the game!" << endl;
+	cout << pl[3].getName() << " you begin the game!" << endl;
 	cout << "Shuffling and dealing the cards..." << endl;
 	array<const string*, DECK_SIZE> deck;
 	initializeDeck(&deck);
@@ -76,7 +78,7 @@ int main() {
 		string blindBid;
 		cin >> blindBid;
 		if (blindBid == "yes") {
-			blind == true;
+			blind = true;
 		}
 		else {
 			blind = false;
@@ -94,14 +96,21 @@ int main() {
 							cout << "Please enter a valid number of tricks" << endl;
 						}
 					}
-				}
-				
-				// 1-13
-				
+				}			
+			}
+
+			else {
+				// computer bids
+				int compBid;
+				pl[b].setBid(compBid);
 			}
 		}
-		cout << pl[3].seeBid() << endl;
+		// cout << pl[3].seeBid() << endl; // testing line for seeing bid
+
 		gameNotWon = false;
+		for (int turns = 0; turns < 13; turns++) {
+
+		}
 	// will have 13 rounds
 	// have player play card
 	// after 13 rounds calculate score
