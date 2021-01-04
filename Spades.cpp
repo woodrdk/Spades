@@ -36,7 +36,9 @@ void displayPlayerCards(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printIntro();
 void gameWon();
+void playAgain();
 string *getNames();
+
 // Main function that calls the actions of the program
 int main() {
 	// prints the welcome to the game
@@ -124,18 +126,14 @@ int main() {
 	// check if game over if not start again if so display results
 	}
 	
-
+	playAgain();
 	cout << endl << endl << endl;
 	// pauses the program till key is pressed
 	system("pause");
 	return 0;
 }
 
-
-void gameWon() {
-	cout << "Congratulations!!!!!!" << endl;
-	cout << endl << "The team of " << "A" << " & " << "B" << "have won this game!!" << endl << endl;
-	cout << "With a score of " << "XXX points" << endl;
+void playAgain() {
 	cout << endl << endl << "Would you like to play again? " << endl;
 	cout << "1. Play again" << endl;
 	cout << "2. Quit" << endl;
@@ -145,8 +143,15 @@ void gameWon() {
 		// play again
 	}
 	else {
-		// quit
+		exit(3);
 	}
+}
+
+void gameWon() {
+	cout << "Congratulations!!!!!!" << endl;
+	cout << endl << "The team of " << "A" << " & " << "B" << "have won this game!!" << endl << endl;
+	cout << "With a score of " << "XXX points" << endl;
+
 }
 
 string* getNames() {
@@ -234,7 +239,7 @@ void printIntro() {
 				gamePoints = 1000;
 			}
 			else {
-				// quit game
+				exit(3);
 			}
 		}
 		else {
