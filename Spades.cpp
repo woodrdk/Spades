@@ -229,6 +229,7 @@ void printIntro() {
 	cout << "1. Short game" << endl;
 	cout << "2. Long game" << endl;
 	cout << "3. End game" << endl;
+
 	int gamePoints = -1;
 	while (gamePoints == -1) {
 		int gameLength;
@@ -236,10 +237,10 @@ void printIntro() {
 		cin >> gameLength;
 		if (gameLength > 0 && gameLength < 4) {
 			if (gameLength == 1) {
-				gamePoints = 500;
+				gamePoints = 500; // 500 point end game
 			}
 			else if (gameLength == 2) {
-				gamePoints = 1000;
+				gamePoints = 1000; // 1000 point end game
 			}
 			else {
 				exit(3);
