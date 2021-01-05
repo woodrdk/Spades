@@ -8,8 +8,8 @@
 #include <random>
 #include <ctime>
 #include "Player.h"
-using namespace std;
 
+using namespace std;
 // Defined the decksize
 const int DECK_SIZE = 52;
 
@@ -37,6 +37,7 @@ void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printIntro();
 void gameWon();
 void playAgain();
+void calculate();
 string *getNames();
 
 // Main function that calls the actions of the program
@@ -110,17 +111,14 @@ int main() {
 				pl[b].setBid(compBid);
 			}
 		}
-		// cout << pl[3].seeBid() << endl; // testing line for seeing bid
-		gameWon();
-		// need to order player cards
-		// assign cards to each player
-
+		
 		gameNotWon = false;
 		for (int turns = 0; turns < 13; turns++) {
 			// starting player plays then rotates thru the order of players
 
 		}
-	// will have 13 rounds
+		calculate();
+		gameWon();
 	// have player play card
 	// after 13 rounds calculate score
 	// check if game over if not start again if so display results
@@ -131,6 +129,11 @@ int main() {
 	// pauses the program till key is pressed
 	system("pause");
 	return 0;
+}
+
+void calculate() {
+	// calculate scores for win 
+	// make sure 
 }
 
 void playAgain() {
@@ -259,12 +262,17 @@ void initializeDeck(array<const string*, DECK_SIZE>* deck) {
 // This method will display the players cards
 void displayPlayerCards(array<const string*, DECK_SIZE> deck) {
 	cout << "Here are your Cards" << endl << endl;
+
 	// Will print out the cards
 	for (int i = 38; i < DECK_SIZE; ++i)
 	{
-		// prints out the card in order
-		cout << *deck[i] << " ";
+		cout << *deck[i] << " "; // FOR TESTING
+		// need to check suits and order suits 
+		// also check values to order the cards for the player by suit and value
+
 	}
+
+
 	// prints two blank lines for spacing to make it look better visually
 	cout << endl << endl;
 }
