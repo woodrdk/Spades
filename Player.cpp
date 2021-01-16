@@ -33,20 +33,22 @@ string Player::getName() {
 	return name;
 }
 
+// to set teammates name
 void Player::setTeamMate(string teamMate) {
 	name = teamMate;
 }
 
+// to set the players cards
 void Player::setCards(string cards[]) {
 	for (int i = 0; i < 13; i++) {
 		cards = &cards[i];
 	}
 }
-
+// to set player bid
 void Player::setBid(int tricks) {
 	bid = tricks;
 }
-
+// to see players bid
 int Player::seeBid() {
 	return bid;
 }
