@@ -46,8 +46,9 @@ int main() {
 	int gamePointsToWin;
 	while (wantToPlayAgain) {
 
-		// prints the welcome to the game
+		// prints the welcome to the game and sets how many points to win
 		gamePointsToWin = printIntro();
+
 		// gets participants names of the players
 		string* participants;
 		participants = getNames();
@@ -121,8 +122,19 @@ int main() {
 				// starting player plays then rotates thru the order of players
 
 			}
-			calculate(gamePointsToWin);
-			gameWon();
+			int calc = calculate(gamePointsToWin, 200, 200); // remove 200 and put proper team scores in
+			if (calc != 0) {
+				string whoWon;
+				if (calc == 1) {
+					whoWon = "A"; //(player1 & player3);
+				}
+				else if (calc == 2) {
+					whoWon = "B"; //(player2 & player4);
+				}
+				// gameWon(whoWon); // will be the one to use
+				gameWon();
+			}
+			
 			// have player play card
 			// after 13 rounds calculate score
 			// check if game over if not start again if so display results
@@ -136,10 +148,19 @@ int main() {
 	return 0;
 }
 
-void calculate(int gamePointsToWin) {
+int calculate(int gamePointsToWin, int teamA, int teamB) {
 	// calculate scores for win 
 	// make sure 
-    // if team a.points >= long or short points
+	
+	if (teamB >= gamePointsToWin) {
+		return 1;
+	}
+	if (teamA >= gamePointsToWin) {
+		return 2;
+	}
+	else {
+		return 0;
+	}
 	// 
 }
 
