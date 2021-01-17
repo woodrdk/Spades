@@ -121,7 +121,7 @@ int main() {
 				// starting player plays then rotates thru the order of players
 
 			}
-			calculate();
+			calculate(gamePointsToWin);
 			gameWon();
 			// have player play card
 			// after 13 rounds calculate score
@@ -136,7 +136,7 @@ int main() {
 	return 0;
 }
 
-void calculate() {
+void calculate(int gamePointsToWin) {
 	// calculate scores for win 
 	// make sure 
     // if team a.points >= long or short points

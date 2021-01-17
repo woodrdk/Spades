@@ -13,6 +13,7 @@ private:
 	int bags;
 	int cards[13];
 	string teamMate;
+	int teamScore;
 public:
 	string toString();
 	void setName(string newName);

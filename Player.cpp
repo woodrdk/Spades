@@ -20,6 +20,8 @@ string Player::toString() {
 	ss << cards;
 	ss << "Team mate: ";
 	ss << teamMate;
+	ss << "Team Score: ";
+	ss << teamScore;
 	return ss.str();
 }
 
