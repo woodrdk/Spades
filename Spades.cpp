@@ -34,7 +34,7 @@ void initializeDeck(array<const string*, DECK_SIZE>* deck);
 void displayDeck(array<const string*, DECK_SIZE> deck);
 void displayPlayerCards(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
-void printIntro();
+int printIntro();
 void gameWon();
 bool playAgain();
 void calculate();
@@ -43,10 +43,11 @@ string *getNames();
 // Main function that calls the actions of the program
 int main() {
 	bool wantToPlayAgain = true;
+	int gamePointsToWin;
 	while (wantToPlayAgain) {
 
 		// prints the welcome to the game
-		printIntro();
+		gamePointsToWin = printIntro();
 		// gets participants names of the players
 		string* participants;
 		participants = getNames();
@@ -126,7 +127,7 @@ int main() {
 			// after 13 rounds calculate score
 			// check if game over if not start again if so display results
 		}
-
+		//  cout << gamePointsToWin; for testing
 		wantToPlayAgain = playAgain();
 		cout << endl << endl << endl;
 	}
@@ -138,8 +139,14 @@ int main() {
 void calculate() {
 	// calculate scores for win 
 	// make sure 
+    // if team a.points >= long or short points
+	// 
 }
 
+/// <summary>
+/// This function will ask user if they want to play again and returns results
+/// </summary>
+/// <returns>returns true if they want to play again ends the app if they say no</returns>
 bool playAgain() {
 	cout << endl << endl << "Would you like to play again? " << endl;
 	cout << "1. Play again" << endl;
@@ -180,7 +187,9 @@ string* getNames() {
 
 	return players;
 }
-
+/// <summary>
+/// This function will display the instructions for spades
+/// </summary>
 void printInstructions() {
 	cout << "These are the rules as per Bicycle Playing cards at https://bicyclecards.com/how-to-play/spades/ " << endl << endl;
 	
@@ -221,7 +230,11 @@ void printInstructions() {
 	cout << "If there is a tie, then all players participate in one more round of play." << endl << endl;
 }
 
-void printIntro() {
+/// <summary>
+/// This starts the game intro announcing to who is playing and asks 
+/// what kind of game they want to play and sets the points goal.
+/// </summary>
+int printIntro() {
 	cout << endl << endl << "\t\tWelcome to Rob's C++ Spades Game" << endl;
 	cout << endl << "Do you need instructions how to play? " << endl << endl;
 	int instructions;
@@ -243,9 +256,11 @@ void printIntro() {
 		if (gameLength > 0 && gameLength < 4) {
 			if (gameLength == 1) {
 				gamePoints = 500; // 500 point end game
+				return 500;
 			}
 			else if (gameLength == 2) {
 				gamePoints = 1000; // 1000 point end game
+				return 1000;
 			}
 			else {
 				exit(3);
