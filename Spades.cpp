@@ -36,96 +36,100 @@ void displayPlayerCards(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 void printIntro();
 void gameWon();
-void playAgain();
+bool playAgain();
 void calculate();
 string *getNames();
 
 // Main function that calls the actions of the program
 int main() {
-	// prints the welcome to the game
-	printIntro();
-	// gets participants names of the players
-	string *participants;
-	participants = getNames();
+	bool wantToPlayAgain = true;
+	while (wantToPlayAgain) {
 
-	// creates 4 players 3 are computer human is player4
-	Player player1, player2, player3, player4;
-	// array of the players
-	Player pl[4] = { player1, player2, player3, player4 };
-	// this loop sets the names of the players
-	for (int i = 0; i < sizeof(participants); i++){
-		// cout << *(participants+i) << endl; // for testing
-		// gets the name of the participant
-		string name = *(participants + i);
-		// sets the name to the player
-		pl[i].setName(name);
-		// the following will set the teammates of the players
-		if (i < 2) {
-			pl[i].setTeamMate(*(participants + 2));
-		}
-		else{
-			pl[i].setTeamMate(*(participants - 2));
-		}
-	}
+		// prints the welcome to the game
+		printIntro();
+		// gets participants names of the players
+		string* participants;
+		participants = getNames();
 
-	cout << pl[3].getName() << " you begin the game!" << endl;
-	cout << "Shuffling and dealing the cards..." << endl;
-	array<const string*, DECK_SIZE> deck;
-	initializeDeck(&deck);
-	shuffleDeck(&deck);
+		// creates 4 players 3 are computer human is player4
+		Player player1, player2, player3, player4;
+		// array of the players
+		Player pl[4] = { player1, player2, player3, player4 };
+		// this loop sets the names of the players
+		for (int i = 0; i < sizeof(participants); i++) {
+			// cout << *(participants+i) << endl; // for testing
+			// gets the name of the participant
+			string name = *(participants + i);
+			// sets the name to the player
+			pl[i].setName(name);
+			// the following will set the teammates of the players
+			if (i < 2) {
+				pl[i].setTeamMate(*(participants + 2));
+			}
+			else {
+				pl[i].setTeamMate(*(participants - 2));
+			}
+		}
 
-	bool gameNotWon = true;
-	while (gameNotWon) {
-		// have players see cards
-		// have players bid
-		cout << "Do you wish to bid blind nill... yes or no? " << flush;
-		bool blind = false;
-		string blindBid;
-		cin >> blindBid;
-		if (blindBid == "yes") {
-			blind = true;
-		}
-		else {
-			blind = false;
-			pl[3].setBid(-1);
-			displayPlayerCards(deck); // testing
-		}
-		for (int b = 0; b < 4; b++) {
-			if (b == 3) {
-				int tricks = -1;
-				if (blind == false) {
-					while (tricks == -1) {
-						cout << pl[b].getName() << " how many tricks do you want to bid? ";
-						cin >> tricks;
-						pl[b].setBid(tricks);
-						if (tricks < 0 || tricks > 13) {
-							cout << "Please enter a valid number of tricks" << endl;
+		cout << pl[3].getName() << " you begin the game!" << endl;
+		cout << "Shuffling and dealing the cards..." << endl;
+		array<const string*, DECK_SIZE> deck;
+		initializeDeck(&deck);
+		shuffleDeck(&deck);
+
+		bool gameNotWon = true;
+		while (gameNotWon) {
+			// have players see cards
+			// have players bid
+			cout << "Do you wish to bid blind nill... yes or no? " << flush;
+			bool blind = false;
+			string blindBid;
+			cin >> blindBid;
+			if (blindBid == "yes") {
+				blind = true;
+			}
+			else {
+				blind = false;
+				pl[3].setBid(-1);
+				displayPlayerCards(deck); // testing
+			}
+			for (int b = 0; b < 4; b++) {
+				if (b == 3) {
+					int tricks = -1;
+					if (blind == false) {
+						while (tricks == -1) {
+							cout << pl[b].getName() << " how many tricks do you want to bid? ";
+							cin >> tricks;
+							pl[b].setBid(tricks);
+							if (tricks < 0 || tricks > 13) {
+								cout << "Please enter a valid number of tricks" << endl;
+							}
 						}
 					}
-				}			
+				}
+
+				else {
+					// computer bids
+					int compBid = -1;
+					pl[b].setBid(compBid);
+				}
 			}
 
-			else {
-				// computer bids
-				int compBid = -1;
-				pl[b].setBid(compBid);
-			}
-		}
-		
-		gameNotWon = false;
-		for (int turns = 0; turns < 13; turns++) {
-			// starting player plays then rotates thru the order of players
+			gameNotWon = false;
+			for (int turns = 0; turns < 13; turns++) {
+				// starting player plays then rotates thru the order of players
 
+			}
+			calculate();
+			gameWon();
+			// have player play card
+			// after 13 rounds calculate score
+			// check if game over if not start again if so display results
 		}
-		calculate();
-		gameWon();
-	// have player play card
-	// after 13 rounds calculate score
-	// check if game over if not start again if so display results
+
+		wantToPlayAgain = playAgain();
+		cout << endl << endl << endl;
 	}
-	
-	playAgain();
-	cout << endl << endl << endl;
 	// pauses the program till key is pressed
 	system("pause");
 	return 0;
@@ -136,7 +140,7 @@ void calculate() {
 	// make sure 
 }
 
-void playAgain() {
+bool playAgain() {
 	cout << endl << endl << "Would you like to play again? " << endl;
 	cout << "1. Play again" << endl;
 	cout << "2. Quit" << endl;
@@ -144,6 +148,7 @@ void playAgain() {
 	cin >> repeat;
 	if (repeat == 1) {
 		// play again
+		return true;
 	}
 	else {
 		exit(3);
