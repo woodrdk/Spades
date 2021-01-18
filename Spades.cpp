@@ -1,5 +1,4 @@
-// Spades.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+
 
 #include <iostream>
 #include <array>
@@ -37,7 +36,7 @@ void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 int printIntro();
 void gameWon();
 bool playAgain();
-void calculate();
+int calculate(int gamePointsToWin, int teamA, int teamB);
 string *getNames();
 
 // Main function that calls the actions of the program
