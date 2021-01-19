@@ -34,7 +34,7 @@ void displayDeck(array<const string*, DECK_SIZE> deck);
 void displayPlayerCards(array<const string*, DECK_SIZE> deck);
 void shuffleDeck(array<const string*, DECK_SIZE>* deck);
 int printIntro();
-void gameWon();
+void gameWon(string teamWin, int winPoints);
 bool playAgain();
 int calculate(int gamePointsToWin, int teamA, int teamB);
 string *getNames();
@@ -116,26 +116,29 @@ int main() {
 				}
 			}
 
-			gameNotWon = false;
+			
 			for (int turns = 0; turns < 13; turns++) {
 				// starting player plays then rotates thru the order of players
 
 			}
 
-			int teamA = player1.seeTeamScore();
+			int teamA = 1000; // = player1.seeTeamScore();
 			int teamB = player2.seeTeamScore();
 
 			int calc = calculate(gamePointsToWin, teamA, teamB);
 			if (calc != 0) {
+				gameNotWon = false;
 				string whoWon;
+				int winPoints = 0;
 				if (calc == 1) {
 					whoWon = player1.getName() + " & " + player3.getName(); //(player1 & player3);
+					winPoints = teamA;
 				}
 				else if (calc == 2) {
 					whoWon = player2.getName() + " & " + player4.getName(); //(player2 & player4);
+					winPoints = teamB;
 				}
-				gameWon(whoWon); // will be the one to use
-				//gameWon();
+				gameWon(whoWon, winPoints);
 			}
 			
 			// have player play card
@@ -152,9 +155,6 @@ int main() {
 }
 
 int calculate(int gamePointsToWin, int teamA, int teamB) {
-	// calculate scores for win 
-	// make sure 
-	
 	if (teamB >= gamePointsToWin) {
 		return 1;
 	}
@@ -185,11 +185,10 @@ bool playAgain() {
 	}
 }
 
-void gameWon(string teamWin) {
+void gameWon(string teamWin, int winPoints) {
 	cout << "Congratulations!!!!!!" << endl;
 	cout << endl << "The team of " << teamWin << " have won this game!!" << endl << endl;
-	cout << "With a score of " << "XXX points" << endl;
-
+	cout << "With a score of " << winPoints << " points" << endl;
 }
 
 string* getNames() {
@@ -279,10 +278,12 @@ int printIntro() {
 		if (gameLength > 0 && gameLength < 4) {
 			if (gameLength == 1) {
 				gamePoints = 500; // 500 point end game
+				cout << "You have chosen to play to " << gamePoints << " points." << endl;
 				return 500;
 			}
 			else if (gameLength == 2) {
 				gamePoints = 1000; // 1000 point end game
+				cout << "You have chosen to play to " << gamePoints << " points." << endl;
 				return 1000;
 			}
 			else {
