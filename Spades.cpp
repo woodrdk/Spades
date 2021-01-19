@@ -47,7 +47,7 @@ int main() {
 
 		// prints the welcome to the game and sets how many points to win
 		gamePointsToWin = printIntro();
-
+		cout << endl;
 		// gets participants names of the players
 		string* participants;
 		participants = getNames();
@@ -71,13 +71,17 @@ int main() {
 				pl[i].setTeamMate(*(participants - 2));
 			}
 		}
-
-		cout << pl[3].getName() << " you begin the game!" << endl;
+		// make a random number to decide who starts the game
+		// assign the number to the player who begins
+		int ran = rand() % 3 + 0;
+		// cout << ran << endl; // for testing
+		cout << pl[ran].getName() << " you begin the game!" << endl;
+		cout << endl;
 		cout << "Shuffling and dealing the cards..." << endl;
 		array<const string*, DECK_SIZE> deck;
 		initializeDeck(&deck);
 		shuffleDeck(&deck);
-
+		cout << endl;
 		bool gameNotWon = true;
 		while (gameNotWon) {
 			// have players see cards
@@ -86,7 +90,9 @@ int main() {
 			bool blind = false;
 			string blindBid;
 			cin >> blindBid;
-			if (blindBid == "yes") {
+			transform(blindBid.begin(), blindBid.end(), blindBid.begin(), ::tolower);
+
+			if (blindBid == "yes" || blindBid == "y") {
 				blind = true;
 			}
 			else {
@@ -94,6 +100,11 @@ int main() {
 				pl[3].setBid(-1);
 				displayPlayerCards(deck); // testing
 			}
+
+			// -1 bid is b nill
+			// nill is 100
+			//
+
 			for (int b = 0; b < 4; b++) {
 				if (b == 3) {
 					int tricks = -1;
