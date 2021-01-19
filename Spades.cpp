@@ -121,17 +121,21 @@ int main() {
 				// starting player plays then rotates thru the order of players
 
 			}
-			int calc = calculate(gamePointsToWin, 200, 200); // remove 200 and put proper team scores in
+
+			int teamA = player1.seeTeamScore();
+			int teamB = player2.seeTeamScore();
+
+			int calc = calculate(gamePointsToWin, teamA, teamB);
 			if (calc != 0) {
 				string whoWon;
 				if (calc == 1) {
-					whoWon = "A"; //(player1 & player3);
+					whoWon = player1.getName() + " & " + player3.getName(); //(player1 & player3);
 				}
 				else if (calc == 2) {
-					whoWon = "B"; //(player2 & player4);
+					whoWon = player2.getName() + " & " + player4.getName(); //(player2 & player4);
 				}
-				// gameWon(whoWon); // will be the one to use
-				gameWon();
+				gameWon(whoWon); // will be the one to use
+				//gameWon();
 			}
 			
 			// have player play card
@@ -181,9 +185,9 @@ bool playAgain() {
 	}
 }
 
-void gameWon() {
+void gameWon(string teamWin) {
 	cout << "Congratulations!!!!!!" << endl;
-	cout << endl << "The team of " << "A" << " & " << "B" << "have won this game!!" << endl << endl;
+	cout << endl << "The team of " << teamWin << " have won this game!!" << endl << endl;
 	cout << "With a score of " << "XXX points" << endl;
 
 }
