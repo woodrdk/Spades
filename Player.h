@@ -22,5 +22,8 @@ public:
 	void setCards(string cards[]);
 	void setBid(int tricks);
 	int seeBid();
-	Player(): score(0),bid(0), tricks(0), bags(0), cards(), teamMate() {};
+	void setTeamScore(int score);
+
+	int seeTeamScore();
+	Player(): score(0),bid(0), tricks(0), bags(0), cards(), teamMate(), teamScore(0) {};
 };

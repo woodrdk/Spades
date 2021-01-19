@@ -160,7 +160,6 @@ int calculate(int gamePointsToWin, int teamA, int teamB) {
 	else {
 		return 0;
 	}
-	// 
 }
 
 /// <summary>

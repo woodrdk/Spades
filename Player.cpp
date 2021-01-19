@@ -54,3 +54,11 @@ void Player::setBid(int tricks) {
 int Player::seeBid() {
 	return bid;
 }
+
+void Player::setTeamScore(int score) {
+	teamScore = score;
+}
+
+int Player::seeTeamScore() {
+	return teamScore;
+}
